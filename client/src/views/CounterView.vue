@@ -1,7 +1,7 @@
 <template>
 	<v-container>
 		<router-link to="/boilers" class="btn">Вернуться</router-link>
-		<h1 class="text-center">Счетчики</h1>
+		<h1 class="text-center">Параметр котельной</h1>
 		<table class="table">
 			<tbody>
 				<tr>
@@ -27,6 +27,7 @@
 			</tbody>
 		</table>
 		<br />
+		<h1 class="text-center">Счетчики котельной</h1>
 		<v-card>
 			<v-card-title>
 				<v-text-field

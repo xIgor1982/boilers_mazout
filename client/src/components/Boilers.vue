@@ -27,7 +27,7 @@
 					:to="{name: 'counter', params: {id: item.Kot_num}}"
 					class="btn"
         >
-          Перейти
+          Параметры
         </router-link>
       </template>
 			</v-data-table>
