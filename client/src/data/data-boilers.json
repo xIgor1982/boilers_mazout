@@ -1,0 +1,89 @@
+[
+	{
+		"Kot_num": 1,
+		"Counter": [
+			{
+				"id_counter": 1,
+				"cnt_name": "In",
+				"cnt_type": 1
+			},
+			{
+				"id_counter": 2,
+				"cnt_name": "Out",
+				"cnt_type": 2
+			},
+			{
+				"id_counter": 3,
+				"cnt_name": "H1",
+				"cnt_type": 3
+			},
+			{
+				"id_counter": 4,
+				"cnt_name": "H2",
+				"cnt_type": 3
+			}
+		],
+		"kot_name": "Bishkil",
+		"kot_adress": "Бишкиль",
+		"kot_ip": "172.31.0.3",
+		"kot_port": null
+	},
+	{
+		"Kot_num": 2,
+		"Counter": [
+			{
+				"id_counter": 5,
+				"cnt_name": "In",
+				"cnt_type": 1
+			},
+			{
+				"id_counter": 6,
+				"cnt_name": "Out",
+				"cnt_type": 2
+			},
+			{
+				"id_counter": 7,
+				"cnt_name": "H1",
+				"cnt_type": 3
+			},
+			{
+				"id_counter": 8,
+				"cnt_name": "H2",
+				"cnt_type": 3
+			}
+		],
+		"kot_name": "Ozerniy",
+		"kot_adress": "Озерный",
+		"kot_ip": "172.31.1.3",
+		"kot_port": null
+	},
+	{
+		"Kot_num": 3,
+		"Counter": [
+			{
+				"id_counter": 9,
+				"cnt_name": "In",
+				"cnt_type": 1
+			},
+			{
+				"id_counter": 10,
+				"cnt_name": "Out",
+				"cnt_type": 2
+			},
+			{
+				"id_counter": 11,
+				"cnt_name": "H1",
+				"cnt_type": 3
+			},
+			{
+				"id_counter": 12,
+				"cnt_name": "H2",
+				"cnt_type": 3
+			}
+		],
+		"kot_name": "Gorniy",
+		"kot_adress": "Горный",
+		"kot_ip": "172.31.2.3",
+		"kot_port": null
+	}
+]

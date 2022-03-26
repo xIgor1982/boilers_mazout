@@ -25,6 +25,7 @@
 			<template v-slot:item.actions="{ item }">
         <router-link
 					:to="{name: 'counter', params: {id: item.Kot_num}}"
+					class="btn"
         >
           Перейти
         </router-link>
@@ -70,4 +71,19 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+
+a.btn  {
+	border: 1px solid red;
+	padding: 5px 15px;
+	border-radius: 5px;
+	color: red;
+	text-decoration: none;
+	transition: all 0.5s;
+
+	&:hover{
+		background: red;
+		color: white;
+	}
+}
+</style>

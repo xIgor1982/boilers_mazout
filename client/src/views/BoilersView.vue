@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-container>
-      <h1>Это обертка для отображения страницы Boilers</h1>
+      <h1 class="text-center">Параметры котельных</h1>
     </v-container>    
     <boilers></boilers>
   </div>
