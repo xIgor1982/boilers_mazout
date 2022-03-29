@@ -1,25 +1,25 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
-import HomeView from "../views/HomeView.vue";
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import BoilersView from '../views/BoilersView.vue';
 
 Vue.use(VueRouter);
 
 const routes = [
 	{
-		path: "/",
-		name: "home",
-		component: HomeView,
+		path: '/',
+		name: 'home',
+		component: BoilersView,
 	},
 	{
-		path: "/boilers",
-		name: "boilers",
-		component: () => import("../views/BoilersView.vue"),
+		path: '/counter/:id',
+		name: 'counter',
+		props: true,
+		component: () => import('../views/CounterView.vue'),
 	},
 	{
-		path: "/boilers/:id",
-		name: "counter",
-    props: true,
-		component: () => import("../views/CounterView.vue"),
+		path: '/reports',
+		name: 'counter',
+		component: () => import('../views/ReportsView.vue'),
 	},
 
 	// {
@@ -34,7 +34,7 @@ const routes = [
 ];
 
 const router = new VueRouter({
-	mode: "history",
+	mode: 'history',
 	base: process.env.BASE_URL,
 	routes,
 });

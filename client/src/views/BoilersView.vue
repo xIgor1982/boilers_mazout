@@ -1,8 +1,5 @@
 <template>
-  <div>
-    <v-container>
-      <h1 class="text-center">Параметры котельных</h1>
-    </v-container>    
+  <div> 
     <boilers></boilers>
   </div>
 </template>

@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"author": "",
 	"scripts": {
-		"serve": "vue-cli-service serve",
+		"serve": "vue-cli-service serve --port 3000",
 		"build": "vue-cli-service build"
 	},
 	"dependencies": {
@@ -12,8 +12,8 @@
 		"vue": "^2.6.14",
 		"vue-router": "^3.5.1",
 		"vuetify": "^2.6.0",
-		"vuex": "^3.6.2", 
-    "vue-cli-plugin-vuetify": "~2.4.8",
+		"vuex": "^3.6.2",
+		"vue-cli-plugin-vuetify": "~2.4.8",
 		"vue-template-compiler": "^2.6.14",
 		"vuetify-loader": "^1.7.0"
 	},
