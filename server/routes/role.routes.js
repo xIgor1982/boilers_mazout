@@ -1,12 +1,45 @@
-const Route = require('express');
-const router = new Route();
+const Route = require('express')
+const router = new Route()
+const db = require('../db')
 
-const RoleController = require('../controller/role.controller.js');
+router.post('/role', async (req, res) => {
+	res.json({ message: 'Вызов метода createRole в RoleController' })
+})
 
-router.post('/role', RoleController.createRole);
-router.get('/role', RoleController.getRole);
-router.get('/role/:id', RoleController.getOneRole);
-router.put('/role', RoleController.updateRole);
-router.delete('/role/:id', RoleController.deleteRole);
+router.get('/role', async (req, res) => {
+	try {
+		const manyRole = await db.query('SELECT * FROM "role"')
+		res.json(manyRole.rows)
+	} catch (err) {
+		res.json({
+			message: 'Ошибка запроса getRole в RoleController',
+			err: `${err}`,
+		})
+	}
+})
 
-module.exports = router;
+router.get('/role/:id', async (req, res) => {
+	try {
+		const id = req.params.id
+		console.log('getOneCounter - id =>', id)
+		const manyRole = await db.query(
+			'SELECT * FROM "role" where "id_role" = $1',
+			[id]
+		)
+		res.json(manyRole.rows)
+	} catch (e) {
+		res.json({
+			message: 'Ошибка запроса getOneRole в RoleController',
+		})
+	}
+})
+
+router.put('/role', async (req, res) => {
+	res.json({ message: 'Вызов метода updateRole в RoleController' })
+})
+
+router.delete('/role/:id', async (req, res) => {
+	res.json({ message: 'Вызов метода deleteRole в RoleController' })
+})
+
+module.exports = router

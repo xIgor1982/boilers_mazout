@@ -1,12 +1,42 @@
-const Route = require('express');
-const router = new Route();
+const Route = require('express')
+const router = new Route()
+const db = require('../db')
 
-const usersController = require('../controller/users.controller.js');
+router.post('/users', async (req, res) => {
+	res.json({ message: 'Вызов метода createCounter в UsersController' })
+})
 
-router.post('/users', usersController.createUsers);
-router.get('/users', usersController.getUsers);
-router.get('/users/:id', usersController.getOneUsers);
-router.put('/users', usersController.updateUsers);
-router.delete('/users/:id', usersController.deleteUsers);
+router.get('/users', async (req, res) => {
+	try {
+		const users = await db.query('SELECT * FROM "Users"')
+		res.json(users.rows)
+	} catch (err) {
+		res.json({
+			message: 'Ошибка запроса getCounter в UsersController',
+			err: `${err}`,
+		})
+	}
+})
 
-module.exports = router;
+router.get('/users/:id', async (req, res) => {
+	try {
+		const id = req.params.id
+		console.log('getOneCounter - id =>', id)
+		const user = await db.query('SELECT * FROM "Users" where "id_user" = $1', [
+			id,
+		])
+		res.json(user.rows)
+	} catch (e) {
+		res.json({ message: 'Ошибка запроса getOneCounter в UsersController' })
+	}
+})
+
+router.put('/users', async (req, res) => {
+	res.json({ message: 'Вызов метода updateCounter в UsersController' })
+})
+
+router.delete('/users/:id', async (req, res) => {
+	res.json({ message: 'Вызов метода deleteCounter в UsersController' })
+})
+
+module.exports = router
