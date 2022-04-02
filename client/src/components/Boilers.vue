@@ -52,83 +52,38 @@ export default {
 				{ text: 'Счетчики', value: 'all_cnt' },
 				{ text: '', value: 'actions', sortable: false },
 			],
-			headers2: "",			
+			headers2: '',
 			boilers: [],
 			loading: true,
-		};
+		}
 	},
 	methods: {
-		// fetchDate() {
-		// 	fetch(
-		// 		"https://raw.githubusercontent.com/xIgor1982/online-store-api/main/responses/table-boiler.json"
-		// 	)
-		// 		.then((res) => res.json())
-		// 		.then((res) => {
-		// 			res.forEach((item) => this.boilers.push(item));
-		// 		});
-		// },
-
 		fetchDate() {
-			const kotelnaya = [];
-			const counter = [];
-			const allKotelnaya = [];
-			const addKotelnaya = (id, count) => {
-				return {
-					id,
-					count,
-				};
-			};
-
 			fetch('/api/kotelnaya')
-				.then((res) => res.json())
-				.then((res) => {
-					res.forEach((item, index) => {
-						kotelnaya.push(item);
-					});
-					kotelnaya.forEach((item) =>
-						allKotelnaya.push(addKotelnaya(item['id_kotelnaya'], 0))
-					);
-				});
-
-			fetch('/api/counter')
-				.then((res) => res.json())
-				.then((res) => {
-					res.forEach((item) => {
-						counter.push(item);
-					});
-					counter.forEach((count) => {
-						allKotelnaya.forEach((item) => {
-							if (item.id == count['id_kotelnaya_Kotelnaya']) {
-								item.count++;
-							}
-						});
-					});
-					kotelnaya.forEach((kot) => {
-						allKotelnaya.forEach((count) => {
-							if (count.id == kot['id_kotelnaya']) {
-								kot['all_cnt'] = count.count;
-							}
-						});
-					});
+				.then(res => res.json())
+				.then(res => {
+					this.boilers = this.checkForNull(res)
+					this.loading = false
 				})
-				.then(() => {
-					// console.log('counter', counter);
-					// console.log('kotelnaya', kotelnaya);
-					// console.log('allKotelnaya', allKotelnaya);
-					this.boilers = kotelnaya;
-					this.loading = false;
-				});
+		},
+		checkForNull(arr) {
+			arr.forEach(item => {
+				for (let key in item) {
+					if (!item[key]) item[key] = '---'
+				}
+			})
+			return arr
 		},
 	},
 	mounted() {
-		this.fetchDate();
+		this.fetchDate()
 	},
 	watch: {
 		$route(to, from) {
-			this.fetchDate();
+			this.fetchDate()
 		},
 	},
-};
+}
 </script>
 
 <style lang="scss" scoped>

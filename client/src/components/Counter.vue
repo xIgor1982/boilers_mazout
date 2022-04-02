@@ -28,15 +28,6 @@
 		</tbody>
 		</table>
 
-		<template>
-			<v-data-table
-				:headers="headers2"
-				:items="current"
-				hide-default-header
-				hide-default-footer
-				class="elevation-1"
-			></v-data-table>
-		</template>
 		<br />
 		<h2 class="text-center">Счетчики котельной</h2>
 		<v-card>
@@ -82,27 +73,7 @@ export default {
 		};
 	},
 	methods: {
-		// fetchDate() {
-		// 	fetch(
-		// 		'https://raw.githubusercontent.com/xIgor1982/online-store-api/main/responses/table-boiler.json'
-		// 	)
-		// 		.then((res) => res.json())
-		// 		.then((res) => {
-		// 			res.forEach((item) => this.boilers.push(item));
-		// 		})
-		// 		.then(() => {
-		// 			this.current = this.boilers.filter(
-		// 				(item) => item.Kot_num == this.id
-		// 			)[0];
-		// 			this.counter = this.current.Counter;
-
-		// 			if (!this.current.kot_port) this.current.kot_port = '---';
-		// 		});
-		// },
-
 		fetchDate() {
-			console.log('id =>', this.id);
-			console.log(`/api/kotelnaya/${this.id}`);
 			fetch(`/api/kotelnaya/${this.id}`)
 				.then((res) => res.json())
 				.then((res) => {

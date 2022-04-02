@@ -1,59 +1,12 @@
 const Route = require('express')
 const router = new Route()
-const db = require('../db')
 
-router.post('/counter', async (req, res) => {
-	try {
-		const { id, name, type, idKotelnaya } = req.body
-		res.json({
-			message: `Переданы тестовые данные => id: ${id}, name: ${name}, type: ${type}, id котельной: ${idKotelnaya}.`,
-		})
-	} catch (e) {
-		res.json({ message: 'Ошибка запроса createCounter в CounterController' })
-	}
-})
+const CountController = require('../controllers/counter.controller')
 
-router.get('/counter', async (req, res) => {
-	try {
-		const counter = await db.query('SELECT * FROM public."Counter"')
-		res.json(counter.rows)
-	} catch (err) {
-		res.json({
-			message: 'Ошибка запроса getCounter в CounterController',
-			err: `${err}`,
-		})
-	}
-})
-router.get('/counter/:id', async (req, res) => {
-	try {
-		const id = req.params.id
-		console.log('getOneCounter - id =>', id)
-		const counter = await db.query(
-			'SELECT * FROM "Counter" where "id_kotelnaya_Kotelnaya" = $1',
-			[id]
-		)
-		res.json(counter.rows)
-	} catch (e) {
-		res.json({ message: 'Ошибка запроса getOneCounter в CounterController' })
-	}
-})
-router.put('/counter', async (req, res) => {
-	try {
-		const { id, name, type, idKotelnaya } = req.body
-		res.json({
-			message: `Обновление данных в таблице "Kotelnaya" => id: ${id}, name: ${name}, type: ${type}, id котельной: ${idKotelnaya}.`,
-		})
-	} catch (e) {
-		res.json({ message: 'Ошибка запроса updateCounter в CounterController' })
-	}
-})
-router.delete('/counter/:id', async (req, res) => {
-	try {
-		const id = req.params.id
-		res.json({ message: `Удаление данных в таблице "Counter" c id: ${id}` })
-	} catch (e) {
-		res.json({ message: 'Ошибка запроса deleteCounter в CounterController' })
-	}
-})
+router.post('/counter', CountController.create)
+router.get('/counter', CountController.get)
+router.get('/counter/:id', CountController.getByIdKot)
+router.put('/counter', CountController.update)
+router.delete('/counter/:id', CountController.delete)
 
 module.exports = router
