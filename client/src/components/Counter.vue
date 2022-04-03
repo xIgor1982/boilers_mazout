@@ -4,28 +4,28 @@
 		<h2 class="text-center">Параметры котельной</h2>
 
 		<table class="table">
-		<tbody>
-			<tr>
-				<td>ID котельной:</td>
-				<td>{{ current.id_kotelnaya }}</td>
-			</tr>
-			<tr>
-				<td>Имя котельной:</td>
-				<td>{{ current.kot_name }}</td>
-			</tr>
-			<tr>
-				<td>Адрес котельной:</td>
-				<td>{{ current.kot_adress }}</td>
-			</tr>
-			<tr>
-				<td>IP котельной:</td>
-				<td>{{ current.kot_ip }}</td>
-			</tr>
-			<tr>
-				<td>PORT котельной:</td>
-				<td>{{ current.kot_port }}</td>
-			</tr>
-		</tbody>
+			<tbody>
+				<tr>
+					<td>ID котельной:</td>
+					<td>{{ current.id_kotelnaya }}</td>
+				</tr>
+				<tr>
+					<td>Имя котельной:</td>
+					<td>{{ current.kot_name }}</td>
+				</tr>
+				<tr>
+					<td>Адрес котельной:</td>
+					<td>{{ current.kot_adress }}</td>
+				</tr>
+				<tr>
+					<td>IP котельной:</td>
+					<td>{{ current.kot_ip }}</td>
+				</tr>
+				<tr>
+					<td>PORT котельной:</td>
+					<td>{{ current.kot_port }}</td>
+				</tr>
+			</tbody>
 		</table>
 
 		<br />
@@ -44,7 +44,10 @@
 				:headers="headers"
 				:items="counter"
 				:search="search"
-				:footer-props="{ 'items-per-page-options': opts }"
+				:footer-props="{ 
+					'items-per-page-options': opts, 
+					'items-per-page-text': 'Количество отображаемых страниц' 
+					}"
 				:loading="loading"
 			></v-data-table>
 		</v-card>
@@ -70,30 +73,30 @@ export default {
 				{ text: 'Тип', value: 'cnt_type' },
 			],
 			loading: true,
-		};
+		}
 	},
 	methods: {
 		fetchDate() {
 			fetch(`/api/kotelnaya/${this.id}`)
-				.then((res) => res.json())
-				.then((res) => {
-					res = res[0];
-					if (!res['kot_port']) res['kot_port'] = '---';
-					this.current = res;
-				});
+				.then(res => res.json())
+				.then(res => {
+					res = res[0]
+					if (!res['kot_port']) res['kot_port'] = '---'
+					this.current = res
+				})
 
 			fetch(`/api/counter/${this.id}`)
-				.then((res) => res.json())
-				.then((res) => {
-					this.counter = res;
-					this.loading = false;
-				});
+				.then(res => res.json())
+				.then(res => {
+					this.counter = res
+					this.loading = false
+				})
 		},
 	},
 	mounted() {
-		this.fetchDate();
+		this.fetchDate()
 	},
-};
+}
 </script>
 
 <style lang="scss" scoped>

@@ -19,7 +19,10 @@
 				:items="boilers"
 				:items-per-page="3"
 				item-key="ordNumber"
-				:footer-props="{ 'items-per-page-options': opts }"
+				:footer-props="{ 
+					'items-per-page-options': opts, 
+					'items-per-page-text': 'Количество отображаемых страниц'
+					}"
 				class="elevation-1"
 				:search="search"
 			>
