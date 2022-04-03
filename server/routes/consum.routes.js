@@ -1,12 +1,12 @@
-const Route = require('express');
-const router = new Route();
+const Route = require('express')
+const router = new Route()
 
-const consumController = require('../controller/consum.controller.js');
+const consumControllers = require('../controllers/consum.controllers')
 
-router.post('/consum', consumController.createConsum);
-router.get('/consum', consumController.getConsum);
-router.get('/consum/:id', consumController.getOneConsumRegisters);
-router.put('/consum', consumController.updateConsum);
-router.delete('/consum/:id', consumController.deleteConsum);
+router.post('/consum', consumControllers.create)
+router.get('/consum', consumControllers.getAll)
+router.get('/consum/:id', consumControllers.getOne)
+router.put('/consum', consumControllers.update)
+router.delete('/consum/:id', consumControllers.delete)
 
-module.exports = router;
+module.exports = router

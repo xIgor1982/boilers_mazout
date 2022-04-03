@@ -1,11 +1,12 @@
-const Router = require('express');
-const router = new Router();
-const kotelnayaController = require('../controller/kotelnaya.controller.js');
+const Router = require('express')
+const router = new Router()
 
-router.post('/kotelnaya', kotelnayaController.createKotelnaya);
-router.get('/kotelnaya', kotelnayaController.getKotelnaya);
-router.get('/kotelnaya/:id', kotelnayaController.getOneKotelnaya);
-router.put('/kotelnaya', kotelnayaController.updateKotelnaya);
-router.delete('/kotelnaya/:id', kotelnayaController.deleteKotelnaya);
+const kotController = require('../controllers/kotelnaya.controllers')
 
-module.exports = router;
+router.post('/kotelnaya', kotController.create)
+router.get('/kotelnaya', kotController.get)
+router.get('/kotelnaya/:id', kotController.getOne)
+router.put('/kotelnaya', kotController.update)
+router.delete('/kotelnaya/:id', kotController.delete)
+
+module.exports = router

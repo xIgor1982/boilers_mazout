@@ -1,19 +1,28 @@
 # boilers_mazout
 
-## Project setup
+## В зависимости от используемого пакета `yarn` или `npm` применяются соответствующие команды
+
+## Установка необходимых модулей на скаченный проект
+
 ```
+yarn install
+или
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Запуск сервера с перезагрузкой для разработки
+
 ```
+yarn run serve
+или
 npm run serve
 ```
 
-### Compiles and minifies for production
+### Сборка итогового проекта
+
 ```
+yarn run build
+или
 npm run build
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

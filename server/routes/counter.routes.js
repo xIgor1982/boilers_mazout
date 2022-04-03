@@ -1,12 +1,12 @@
-const Route = require('express');
-const router = new Route();
+const Route = require('express')
+const router = new Route()
 
-const counterController = require('../controller/counter.controller.js');
+const CountController = require('../controllers/counter.controller')
 
-router.post('/counter', counterController.createCounter);
-router.get('/counter', counterController.getCounter);
-router.get('/counter/:id', counterController.getOneCounterKotelnaya);
-router.put('/counter', counterController.updateCounter);
-router.delete('/counter/:id', counterController.deleteCounter);
+router.post('/counter', CountController.create)
+router.get('/counter', CountController.get)
+router.get('/counter/:id', CountController.getByIdKot)
+router.put('/counter', CountController.update)
+router.delete('/counter/:id', CountController.delete)
 
-module.exports = router;
+module.exports = router

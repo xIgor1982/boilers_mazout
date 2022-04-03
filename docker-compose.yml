@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  client:
+    build: client
+    image: client:v1
+    container_name: client
+    restart: always
+    ports:
+      - '3002:3000'
+    networks:
+      net_mazut:
+        ipv4_address: 193.168.2.4
+
+  api:
+    build: server
+    image: server:v1
+    container_name: server
+    #network_mode: "host"
+    restart: always
+    environment:
+      PORT: 3003
+    ports:
+      - '3003:3001'
+    networks:
+      net_mazut:
+        ipv4_address: 193.168.2.5
+
+networks:
+  net_mazut:
+    ipam:
+      config:
+        - subnet: 193.168.2.0/24

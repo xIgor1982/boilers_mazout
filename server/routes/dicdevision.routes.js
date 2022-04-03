@@ -1,12 +1,12 @@
-const Route = require('express');
-const router = new Route();
+const Route = require('express')
+const router = new Route()
 
-const DicdevisionController = require('../controller/dicdevision.controller.js');
+const dicdevisionControllers = require('../controllers/dicdevision.controllers')
 
-router.post('/dicdevision', DicdevisionController.createDicdevision);
-router.get('/dicdevision', DicdevisionController.getDicdevision);
-router.get('/dicdevision/:id', DicdevisionController.getOneDicdevision);
-router.put('/dicdevision', DicdevisionController.updateDicdevision);
-router.delete('/dicdevision/:id', DicdevisionController.deleteDicdevision);
+router.post('/dicdevision', dicdevisionControllers.create)
+router.get('/dicdevision', dicdevisionControllers.getAll)
+router.get('/dicdevision/:id', dicdevisionControllers.getOne)
+router.put('/dicdevision', dicdevisionControllers.update)
+router.delete('/dicdevision/:id', dicdevisionControllers.delete)
 
-module.exports = router;
+module.exports = router

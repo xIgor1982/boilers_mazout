@@ -1,12 +1,12 @@
-const Route = require('express');
-const router = new Route();
+const Route = require('express')
+const router = new Route()
 
-const registersController = require('../controller/registers.controller.js');
+const regControllers = require('../controllers/registers.routes')
 
-router.post('/registers', registersController.createRegisters);
-router.get('/registers', registersController.getRegisters);
-router.get('/registers/:id', registersController.getOneRegisters);
-router.put('/registers', registersController.updateRegisters);
-router.delete('/registers/:id', registersController.deleteRegisters);
+router.post('/registers', regControllers.create)
+router.get('/registers', regControllers.getAll)
+router.get('/registers/:id', regControllers.getOne)
+router.put('/registers', regControllers.update)
+router.delete('/registers/:id', regControllers.delete)
 
-module.exports = router;
+module.exports = router

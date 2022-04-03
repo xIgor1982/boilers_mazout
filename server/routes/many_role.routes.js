@@ -1,12 +1,12 @@
-const Route = require('express');
-const router = new Route();
+const Route = require('express')
+const router = new Route()
 
-const ManyRoleController = require('../controller/many_role.controller.js');
+const manyRoleController = require('../controllers/many_role.controllers')
 
-router.post('/manyrole', ManyRoleController.createManyRole);
-router.get('/manyrole', ManyRoleController.getManyRole);
-router.get('/manyrole/:id', ManyRoleController.getOneManyRole);
-router.put('/manyrole', ManyRoleController.updateManyRole);
-router.delete('/manyrole/:id', ManyRoleController.deleteManyRole);
+router.post('/manyrole', manyRoleController.create)
+router.get('/manyrole', manyRoleController.getAll)
+router.get('/manyrole/:id', manyRoleController.getOne)
+router.put('/manyrole', manyRoleController.update)
+router.delete('/manyrole/:id', manyRoleController.delete)
 
-module.exports = router;
+module.exports = router
