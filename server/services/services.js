@@ -21,8 +21,8 @@ const createNewArray = (
 	}
 
 	req.forEach(kot => {
-		res.forEach(count => {
-			if (count[firstId] == kot[secondId]) {
+		res.forEach(count => {			
+			if (count[firstId] == kot[secondId]) {				
 				kot[nameProp] = count[searchField]
 			}
 		})
