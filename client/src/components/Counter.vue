@@ -39,9 +39,9 @@
 				<v-text-field
 					v-model="search"
 					append-icon="mdi-magnify"
-					label="Search"
+					label="Поиск"
 					single-line
-					hide-details
+					hide-details					
 				></v-text-field>
 			</v-card-title>
 			<v-data-table
@@ -69,10 +69,6 @@ export default {
 			current: '',
 			counter: [],
 			headers: [
-				{
-					text: 'ID',
-					value: 'id_counter',
-				},
 				{ text: 'Название', value: 'cnt_name' },
 				{ text: 'Тип', value: 'cnt_type' },
 			],
