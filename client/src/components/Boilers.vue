@@ -29,9 +29,11 @@
 				<template v-slot:item.actions="{ item }">
 					<router-link
 						:to="{ name: 'counter', params: { id: item.id_kotelnaya } }"
-						class="btn"
+						class="btn-link"
 					>
-						Параметры
+						<v-btn block depressed color="red white--text" >
+							Параметры
+						</v-btn>						
 					</router-link>
 				</template>
 			</v-data-table>
@@ -53,7 +55,7 @@ export default {
 				{ text: 'IP', value: 'kot_ip' },
 				{ text: 'Port', value: 'kot_port' },
 				{ text: 'Счетчики', value: 'all_cnt' },
-				{ text: '', value: 'actions', sortable: false },
+				{ text: '', value: 'actions', sortable: false, width: '150px' },
 			],
 			headers2: '',
 			boilers: [],
@@ -90,17 +92,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-a.btn {
-	border: 1px solid red;
-	padding: 5px 15px;
-	border-radius: 5px;
-	color: red;
+a.btn-link  {
 	text-decoration: none;
-	transition: all 0.5s;
+}
 
-	&:hover {
-		background: red;
-		color: white;
-	}
+table th:last-child {
+	width: 80px;
+}
+
+table td:last-child {
+	width: 80px;
 }
 </style>

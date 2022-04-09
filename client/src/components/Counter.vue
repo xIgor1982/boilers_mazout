@@ -1,6 +1,10 @@
 <template>
 	<v-container>
-		<router-link to="/" class="btn">Вернуться</router-link>
+		<router-link to="/" class="btn-link">
+			<v-btn color="red white--text" >
+				Вернуться
+			</v-btn>
+		</router-link>
 		<h2 class="text-center">Параметры котельной</h2>
 
 		<table class="table">
@@ -128,17 +132,7 @@ export default {
 	padding: 5px;
 }
 
-a.btn {
-	border: 1px solid red;
-	padding: 5px 15px;
-	border-radius: 5px;
-	color: red;
+a.btn-link  {
 	text-decoration: none;
-	transition: all 0.5s;
-
-	&:hover {
-		background: red;
-		color: white;
-	}
 }
 </style>
