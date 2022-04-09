@@ -1,6 +1,6 @@
 <template>
 	<v-row>
-		<v-col cols="12" sm="6" md="3">
+		<v-col cols="12" sm="4" md="4">
 			<h5 class="text-center">Котельные</h5>
 			<v-select
 				v-model="select"
@@ -14,21 +14,7 @@
 				single-line
 			></v-select>
 		</v-col>
-		<v-col cols="12" sm="6" md="3">
-			<h5 class="text-center">Счетчики</h5>
-			<v-select
-				v-model="select2"
-				:hint="`${select2.state}, ${select2.abbr}`"
-				:items="items2"
-				item-text="state"
-				item-value="abbr"
-				label="Select"
-				persistent-hint
-				return-object
-				single-line
-			></v-select>
-		</v-col>
-		<v-col cols="12" sm="6" md="3">
+		<v-col cols="12" sm="4" md="4">
 			<h5 class="text-center">Дата с</h5>
 			<v-menu
 				ref="menu"
@@ -59,7 +45,7 @@
 			</v-menu>
 		</v-col>
 		<v-spacer></v-spacer>
-		<v-col cols="12" sm="6" md="3">
+		<v-col cols="12" sm="4" md="4">
 			<h5 class="text-center">Дата по</h5>
 			<v-menu
 				ref="menu2"
@@ -107,7 +93,6 @@ export default {
 		menu2: false,
 		select: {},
 		items: [],
-		select2: {},
 		items2: [],
 	}),
 	methods: {
@@ -146,7 +131,6 @@ export default {
 					})
 					// console.log('this.items2', this.items2)
 
-					this.select2 = this.items2[0]
 				})
 		},
 	},

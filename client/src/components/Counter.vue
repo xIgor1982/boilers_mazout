@@ -1,7 +1,7 @@
 <template>
 	<v-container>
 		<router-link to="/" class="btn-link">
-			<v-btn color="red white--text" >
+			<v-btn color="rgba(244, 67, 54, 0.85)" class="white--text" >
 				Вернуться
 			</v-btn>
 		</router-link>

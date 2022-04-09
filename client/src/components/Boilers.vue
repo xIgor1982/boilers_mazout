@@ -19,10 +19,10 @@
 				:items="boilers"
 				:items-per-page="3"
 				item-key="ordNumber"
-				:footer-props="{ 
-					'items-per-page-options': opts, 
-					'items-per-page-text': 'Количество отображаемых страниц'
-					}"
+				:footer-props="{
+					'items-per-page-options': opts,
+					'items-per-page-text': 'Количество отображаемых страниц',
+				}"
 				class="elevation-1"
 				:search="search"
 			>
@@ -31,9 +31,14 @@
 						:to="{ name: 'counter', params: { id: item.id_kotelnaya } }"
 						class="btn-link"
 					>
-						<v-btn block depressed color="red white--text" >
+						<v-btn
+							block
+							depressed
+							class="white--text"
+							color="rgba(244, 67, 54, 0.85)"
+						>
 							Параметры
-						</v-btn>						
+						</v-btn>
 					</router-link>
 				</template>
 			</v-data-table>
@@ -92,7 +97,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-a.btn-link  {
+a.btn-link {
 	text-decoration: none;
 }
 
