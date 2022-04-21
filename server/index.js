@@ -2,6 +2,24 @@ require('dotenv').config()
 const express = require('express')
 const fs = require('fs')
 const path = require('path')
+const nodemailer = require('nodemailer')
+
+// const transporter = nodemailer.createTransport({
+// 	service: 'mail',
+// 	auth: {
+// 		user: process.env.MAILER_EMAIL,
+// 		pass: process.env.MAILER_PASSWORD,
+// 	},
+// })
+
+// const mailOptions = {
+// 	from: 'test_mail_igx@mail.ru',
+// 	to: 'test_mail_igx@mail.ru',
+// 	subject: 'Письмо отправленное через NodeJS',
+// 	text: "Содержание письма..."
+// }
+
+// transporter.sendMail(mailOptions)
 
 const app = express()
 const PORT = process.env.PORT_SERVER || 3001
