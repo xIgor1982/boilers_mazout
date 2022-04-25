@@ -28,14 +28,14 @@ const transporter = nodemailer.createTransport(
 		},
 	},
 	{
-		from: 'Тестовое сообщение: <test_mail_igx@mail.ru>',
+		from: 'test_mail_igx@mail.ru',
 	}
 )
 
 const mailer = message => {
 	transporter.sendMail(message, (err, info) => {
 		if (err) return console.log(err)
-		console.log(`Email set: ${info}`)
+		console.log(`Сообщение отправлено:`, info)
 	})
 }
 

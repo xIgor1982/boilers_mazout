@@ -22,7 +22,7 @@ fs.readdirSync('./routes/').forEach(file => {
 
 setTimeout((mess = 'Бойлер 1', textMess = 'с __.__ не поступают сведения') => {
 	const message = {
-		to: '<test_mail_igx@mail.ru>',
+		to: 'test_mail_igx@mail.ru',
 		subject: `Ошибка работы бойлера! ${mess}.... `,
 		text: `
 			Сообщение об ошибке работы - ${mess}
@@ -33,4 +33,4 @@ setTimeout((mess = 'Бойлер 1', textMess = 'с __.__ не поступаю�
 	mailer(message)
 }, 3000)
 
-app.listen(PORT, () => console.log(`server started on post ${PORT}`))
+app.listen(PORT, () => console.log(`server started on port ${PORT}`))
