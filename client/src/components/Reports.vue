@@ -130,7 +130,6 @@ export default {
 						this.items2.push({ state, abbr })
 					})
 					// console.log('this.items2', this.items2)
-
 				})
 		},
 	},

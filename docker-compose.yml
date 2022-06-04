@@ -1,33 +1,57 @@
 version: '3'
 
 services:
+  api:
+    build: ./api
+    container_name: api
+    restart: always
+    ports:
+      - '3001:3001'
+    volumes:
+      - /app/node_modules
+      - ./api:/app
   client:
-    build: client
-    image: client:v1
+    build: ./client
     container_name: client
     restart: always
     ports:
-      - '3002:3000'
-    networks:
-      net_mazut:
-        ipv4_address: 193.168.2.4
+      - '3000:3000'
+    volumes:
+      - /app/node_modules
+      - ./client:/app
+# version: '3'
 
-  api:
-    build: server
-    image: server:v1
-    container_name: server
-    #network_mode: "host"
-    restart: always
-    environment:
-      PORT: 3003
-    ports:
-      - '3003:3001'
-    networks:
-      net_mazut:
-        ipv4_address: 193.168.2.5
+# services:
+#   client:
+#     build: ./client
+# image: client:v1
+# container_name: client
+# restart: always
+# ports:
+#   - '3333:3333'
+# volumes:
+#   - /app/node_modules
+#   - ./client:/app
+# networks:
+#   net_mazut:
+#     ipv4_address: 193.168.2.4
 
-networks:
-  net_mazut:
-    ipam:
-      config:
-        - subnet: 193.168.2.0/24
+# api:
+#   build: ./api
+# image: api:v1
+# container_name: api
+#network_mode: "host"
+# restart: always
+# ports:
+#   - '3001:3001'
+# volumes:
+#   - /app/node_modules
+#   - ./api:/app
+# networks:
+#   net_mazut:
+#     ipv4_address: 193.168.2.5
+# networks:
+#   net_mazut:
+#     ipam:
+#       config:
+#         - subnet: 193.168.2.0/24

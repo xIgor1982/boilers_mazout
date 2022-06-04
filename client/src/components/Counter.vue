@@ -1,7 +1,7 @@
 <template>
 	<v-container>
 		<router-link to="/" class="btn-link">
-			<v-btn color="rgba(244, 67, 54, 0.85)" class="white--text" >
+			<v-btn color="rgba(244, 67, 54, 0.85)" class="white--text">
 				Вернуться
 			</v-btn>
 		</router-link>
@@ -41,17 +41,17 @@
 					append-icon="mdi-magnify"
 					label="Поиск"
 					single-line
-					hide-details					
+					hide-details
 				></v-text-field>
 			</v-card-title>
 			<v-data-table
 				:headers="headers"
 				:items="counter"
 				:search="search"
-				:footer-props="{ 
-					'items-per-page-options': opts, 
-					'items-per-page-text': 'Количество отображаемых страниц' 
-					}"
+				:footer-props="{
+					'items-per-page-options': opts,
+					'items-per-page-text': 'Количество отображаемых страниц',
+				}"
 				:loading="loading"
 			></v-data-table>
 		</v-card>
@@ -77,7 +77,7 @@ export default {
 	},
 	methods: {
 		fetchDate() {
-			fetch(`/api/kotelnaya/${this.id}`)
+			fetch(`http://localhost:3001/api/kotelnaya/${this.id}`)
 				.then(res => res.json())
 				.then(res => {
 					res = res[0]
@@ -85,7 +85,7 @@ export default {
 					this.current = res
 				})
 
-			fetch(`/api/counter/${this.id}`)
+			fetch(`http://localhost:3001/api/counter/${this.id}`)
 				.then(res => res.json())
 				.then(res => {
 					this.counter = res
@@ -128,7 +128,7 @@ export default {
 	padding: 5px;
 }
 
-a.btn-link  {
+a.btn-link {
 	text-decoration: none;
 }
 </style>

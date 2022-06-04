@@ -2,7 +2,6 @@ require('dotenv').config()
 const express = require('express')
 const fs = require('fs')
 const path = require('path')
-const mailer = require('./nodemailer')
 
 const app = express()
 const PORT = process.env.PORT_SERVER || 3001
@@ -19,17 +18,4 @@ fs.readdirSync('./routes/').forEach(file => {
 	app.use('/api', require(`./routes/${file}`))
 })
 
-setTimeout((mess = 'Бойлер 1', textMess = 'с __.__ не поступают сведения') => {
-	const message = {
-		to: 'test_mail_igx@mail.ru',
-		subject: `Ошибка работы бойлера! ${mess}.... `,
-		text: `
-			Сообщение об ошибке работы - ${mess}
-			-> ${textMess}			
-			`,
-	}
-
-	mailer(message)
-}, 3000)
-
-app.listen(PORT, () => console.log(`server started on port ${PORT}`))
+app.listen(PORT, () => console.log(`server started on post ${PORT}`))

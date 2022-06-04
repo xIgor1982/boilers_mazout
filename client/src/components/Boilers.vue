@@ -69,7 +69,7 @@ export default {
 	},
 	methods: {
 		fetchDate() {
-			fetch('/api/kotelnaya')
+			fetch('http://localhost:3001/api/kotelnaya')
 				.then(res => res.json())
 				.then(res => {
 					this.boilers = this.checkForNull(res)
