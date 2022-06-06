@@ -2,23 +2,23 @@ version: '3'
 
 services:
   api:
-    build: ./api
+    build: ./usr/src/app
     container_name: api
     restart: always
     ports:
       - '3001:3001'
     volumes:
-      - /app/node_modules
-      - ./api:/app
+      - /usr/src/app/node_modules
+      - ./api:/usr/src/app
   client:
-    build: ./client
+    build: ./usr/src/app/client
     container_name: client
     restart: always
     ports:
       - '3000:3000'
     volumes:
-      - /app/node_modules
-      - ./client:/app
+      - /usr/src/app/node_modules
+      - ./client:/usr/src/app
 # version: '3'
 
 # services:
