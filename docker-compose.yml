@@ -2,23 +2,35 @@ version: '3'
 
 services:
   api:
-    build: ./usr/src/app
+    build: ./api
     container_name: api
     restart: always
     ports:
       - '3001:3001'
-    volumes:
-      - /usr/src/app/node_modules
-      - ./api:/usr/src/app
+    # volumes:
+    #   - /usr/src/app/node_modules
+    #   - ./api:/usr/src/app
+    networks:
+      net_mazut:
+        ipv4_address: 193.168.2.2
   client:
-    build: ./usr/src/app/client
+    build: ./client
     container_name: client
     restart: always
     ports:
       - '3000:3000'
-    volumes:
-      - /usr/src/app/node_modules
-      - ./client:/usr/src/app
+    # volumes:
+    #   - /usr/src/app/node_modules
+    #   - ./client:/usr/src/app
+    networks:
+      net_mazut:
+        ipv4_address: 193.168.2.3
+
+networks:
+  net_mazut:
+    ipam:
+      config:
+        - subnet: 193.168.2.0/24
 # version: '3'
 
 # services:

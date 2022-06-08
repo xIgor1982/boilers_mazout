@@ -77,7 +77,7 @@ export default {
 	},
 	methods: {
 		fetchDate() {
-			fetch(`http://localhost:3001/api/kotelnaya/${this.id}`)
+			fetch(`http://192.168.1.70:3001/api/kotelnaya/${this.id}`)
 				.then(res => res.json())
 				.then(res => {
 					res = res[0]
@@ -85,7 +85,7 @@ export default {
 					this.current = res
 				})
 
-			fetch(`http://localhost:3001/api/counter/${this.id}`)
+			fetch(`http://192.168.1.70:3001/api/counter/${this.id}`)
 				.then(res => res.json())
 				.then(res => {
 					this.counter = res
