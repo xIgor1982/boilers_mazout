@@ -59,6 +59,8 @@
 </template>
 
 <script>
+import { ENDPOINT_SERVER } from '../config-server'
+
 export default {
 	name: 'Counter',
 	props: ['id'],
@@ -77,7 +79,7 @@ export default {
 	},
 	methods: {
 		fetchDate() {
-			fetch(`http://10.0.198.39:3001/api/kotelnaya/${this.id}`)
+			fetch(`${ENDPOINT_SERVER}/api/kotelnaya/${this.id}`)
 				.then(res => res.json())
 				.then(res => {
 					res = res[0]
@@ -85,7 +87,7 @@ export default {
 					this.current = res
 				})
 
-			fetch(`http://10.0.198.39:3001/api/counter/${this.id}`)
+			fetch(`${ENDPOINT_SERVER}/api/counter/${this.id}`)
 				.then(res => res.json())
 				.then(res => {
 					this.counter = res

@@ -21,7 +21,7 @@
 				item-key="ordNumber"
 				:footer-props="{
 					'items-per-page-options': opts,
-					'items-per-page-text': 'Количество отображаемых страниц',
+					'items-per-page-text': 'Количество отображаемых страниц!',
 				}"
 				class="elevation-1"
 				:search="search"
@@ -47,6 +47,8 @@
 </template>
 
 <script>
+import { ENDPOINT_SERVER } from '../config-server'
+
 export default {
 	name: 'Boilers',
 	data() {
@@ -69,7 +71,7 @@ export default {
 	},
 	methods: {
 		fetchDate() {
-			fetch('http://10.0.198.39:3001/api/kotelnaya')
+			fetch(`${ENDPOINT_SERVER}/api/kotelnaya`)
 				.then(res => res.json())
 				.then(res => {
 					this.boilers = this.checkForNull(res)

@@ -1,3 +1,5 @@
+# Для сервера
+
 version: '3'
 
 services:
@@ -7,9 +9,6 @@ services:
     restart: always
     ports:
       - '3001:3001'
-    # volumes:
-    #   - /usr/src/app/node_modules
-    #   - ./api:/usr/src/app
     networks:
       net_mazut:
         ipv4_address: 193.168.2.2
@@ -19,9 +18,6 @@ services:
     restart: always
     ports:
       - '3000:3000'
-    # volumes:
-    #   - /usr/src/app/node_modules
-    #   - ./client:/usr/src/app
     networks:
       net_mazut:
         ipv4_address: 193.168.2.3
@@ -31,39 +27,28 @@ networks:
     ipam:
       config:
         - subnet: 193.168.2.0/24
+
+# для разработки
+
 # version: '3'
 
 # services:
+#   api:
+#     build: ./api
+#     container_name: api
+#     restart: always
+#     ports:
+#       - '3001:3001'
+#     volumes:
+#       - /usr/src/app/node_modules
+#       - ./api:/usr/src/app
+
 #   client:
 #     build: ./client
-# image: client:v1
-# container_name: client
-# restart: always
-# ports:
-#   - '3333:3333'
-# volumes:
-#   - /app/node_modules
-#   - ./client:/app
-# networks:
-#   net_mazut:
-#     ipv4_address: 193.168.2.4
-
-# api:
-#   build: ./api
-# image: api:v1
-# container_name: api
-#network_mode: "host"
-# restart: always
-# ports:
-#   - '3001:3001'
-# volumes:
-#   - /app/node_modules
-#   - ./api:/app
-# networks:
-#   net_mazut:
-#     ipv4_address: 193.168.2.5
-# networks:
-#   net_mazut:
-#     ipam:
-#       config:
-#         - subnet: 193.168.2.0/24
+#     container_name: client
+#     restart: always
+#     ports:
+#       - '3000:3000'
+#     volumes:
+#       - /usr/src/app/node_modules
+#       - ./client:/usr/src/app
