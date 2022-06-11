@@ -1,32 +1,47 @@
 <template>
-	<v-data-table
-		:headers="headers"
-		:items="boilers"
-		:items-per-page="3"
-		item-key="ordNumber"
-		:footer-props="{
-			'items-per-page-options': opts,
-			'items-per-page-text': 'Количество отображаемых страниц!',
-		}"
-		class="elevation-1"
-		:search="search"
-	>
-		<template v-slot:item.actions="{ item }">
-			<router-link
-				:to="{ name: 'counter', params: { id: item.id_kotelnaya } }"
-				class="btn-link"
+	<v-card class='border-red'>
+		<v-card-title>
+			<v-text-field
+				v-model="search"
+				append-icon="mdi-magnify"
+				label="Поиск"
+				single-line
+				hide-details
+				sort-by="lastOperDt"
+				multi-sort
+				:loading="loading"
 			>
-				<v-btn
-					block
-					depressed
-					class="white--text"
-					color="rgba(244, 67, 54, 0.85)"
+			</v-text-field>
+		</v-card-title>
+		<v-data-table
+			:headers="headers"
+			:items="working"
+			:items-per-page="3"
+			item-key="ordNumber"
+			:footer-props="{
+				'items-per-page-options': opts,
+				'items-per-page-text': 'Количество отображаемых страниц!',
+			}"
+			class="elevation-1"
+			:search="search"
+		>
+			<template v-slot:item.actions="{ item }">
+				<router-link
+					:to="{ name: 'counter', params: { id: item.id_kotelnaya } }"
+					class="btn-link"
 				>
-					Параметры
-				</v-btn>
-			</router-link>
-		</template>
-	</v-data-table>
+					<v-btn
+						block
+						depressed
+						class="white--text"
+						color="rgba(244, 67, 54, 0.85)"
+					>
+						Параметры
+					</v-btn>
+				</router-link>
+			</template>
+		</v-data-table>
+	</v-card>
 </template>
 
 <!-- <template>
@@ -36,6 +51,8 @@
 </template> -->
 
 <script>
+import { ENDPOINT_SERVER } from '../config-server'
+
 export default {
 	name: 'ErrorWorker',
 	data() {
@@ -47,16 +64,47 @@ export default {
 				{ text: 'ID', value: 'id_kotelnaya' },
 				{ text: 'Имя', value: 'kot_name' },
 				{ text: 'Адрес', value: 'kot_adress' },
-				{ text: 'IP', value: 'kot_ip' },
 				{ text: 'Error', value: '' },
 				{ text: '', value: 'actions', sortable: false, width: '150px' },
 			],
-			headers2: '',
-			boilers: [],
+			working: [],
 			loading: true,
 		}
+	},
+	methods: {
+		errorWorking() {
+			console.log('errorWorking')
+			fetch(`${ENDPOINT_SERVER}/api/kotelnaya`)
+				.then(res => res.json())
+				.then(res => {
+					this.working = res
+					this.loading = false
+				})
+
+			fetch(`${ENDPOINT_SERVER}/api/working/2`)
+			.then(res => res.json())
+				.then(res => {
+					console.log('res', res)
+				})
+		},
+	},
+	mounted() {
+		this.errorWorking()
 	},
 }
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+a.btn-link {
+	text-decoration: none;
+}
+
+table th:last-child {
+	width: 80px;
+}
+
+table td:last-child {
+	width: 80px;
+}
+
+</style>

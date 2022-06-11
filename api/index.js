@@ -19,6 +19,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use('/', require(`./routes_views/server_page`))
 
 fs.readdirSync('./routes/').forEach(file => {
+	console.log('file =>', file)
 	app.use('/api', require(`./routes/${file}`))
 })
 
