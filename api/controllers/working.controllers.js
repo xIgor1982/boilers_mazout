@@ -14,14 +14,25 @@ class workController {
 		}
 	}
 
+	// async get(req, res) {
+	// 	try {
+	// 		const id = req.params.id
+	// 		const kotelnaya = await db.query(
+	// 			'SELECT * FROM "Kotelnaya" where "id_kotelnaya" = $1',
+	// 			[id]
+	// 		)
+	// 		res.json(kotelnaya.rows)
+	// 	} catch (e) {
+	// 		res.json({
+	// 			message: 'Ошибка get запроса в working controller',
+	// 		})
+	// 	}
+	// }
+
 	async get(req, res) {
 		try {
-			const id = req.params.id
-			const kotelnaya = await db.query(
-				'SELECT * FROM "Kotelnaya" where "id_kotelnaya" = $1',
-				[id]
-			)
-			res.json(kotelnaya.rows)
+
+			res.json('Тест')
 		} catch (e) {
 			res.json({
 				message: 'Ошибка get запроса в working controller',
@@ -32,22 +43,20 @@ class workController {
 	async getOne(req, res) {
 		try {
 			const id = req.params.id
-			// const id = 192
-			const working = await db.query(
+			const kotelnaya = await db.query(
 				`
-					SELECT consum.*, consum.dt, reg.reg_name, reg."id_counter_Counter" 
-					FROM consum, "Registers" reg 
-  				WHERE "id_reg_Registers" = ${id} 
-					AND reg.id_reg=consum."id_reg_Registers" 
-         	ORDER BY dt desc
-     			limit 2;
-			`
+				SELECT * FROM consum, "Kotelnaya" kot
+				WHERE consum."id_reg_Registers" = kot.regmon
+				AND kot.id_kotelnaya = $1
+				ORDER BY consum.dt desc
+				LIMIT 2;
+				 `,
+				[id]
 			)
-			console.log('working =', working)
-			res.json(working)
+			res.json(kotelnaya.rows)
 		} catch (e) {
 			res.json({
-				message: 'Ошибка get запроса working controller',
+				message: 'Ошибка get запроса в working controller',
 			})
 		}
 	}

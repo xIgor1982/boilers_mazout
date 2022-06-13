@@ -2,7 +2,7 @@
 	<div>
 		<h1 class="text-center">Отчет по котельной</h1>
 		<reports></reports>
-		<chart-reports></chart-reports>
+		<!-- <chart-reports></chart-reports> -->
 	</div>
 </template>
 
