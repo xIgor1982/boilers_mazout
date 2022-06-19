@@ -18,8 +18,13 @@ const routes = [
 	},
 	{
 		path: '/reports',
-		name: 'counter',
+		name: 'reports',
 		component: () => import('../views/ReportsView.vue'),
+	},
+	{
+		path: '/status',
+		name: 'status',
+		component: () => import('../views/StatusView.vue'),
 	},
 
 	// {
@@ -31,7 +36,7 @@ const routes = [
 	// 	component: () =>
 	// 		import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
 	// },
-];
+]
 
 const router = new VueRouter({
 	mode: 'history',

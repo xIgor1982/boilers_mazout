@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import Headers from './components/Header.vue'
+import Headers from './components/Headers.vue'
 
 export default {
 	components: { Headers },

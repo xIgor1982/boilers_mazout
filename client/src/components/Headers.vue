@@ -1,10 +1,5 @@
 <template>
-	<v-app-bar
-		app
-		color="rgb(244, 67, 54)"
-		class="white--text"
-		height="100px"
-	>
+	<v-app-bar app color="rgb(244, 67, 54)" class="white--text" height="100px">
 		<v-container>
 			<h1 class="main-h1">АСУ «Мазут»</h1>
 			<router-link to="/" class="text--router-link" :class="activeClass">
@@ -12,6 +7,9 @@
 			</router-link>
 			<router-link to="/reports" class="text--router-link">
 				Отчеты
+			</router-link>
+			<router-link to="/status" class="text--router-link">
+				Состояние
 			</router-link>
 		</v-container>
 	</v-app-bar>

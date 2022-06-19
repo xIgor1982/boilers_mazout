@@ -4,6 +4,7 @@
 	"author": "",
 	"scripts": {
 		"serve": "vue-cli-service serve --port 3000",
+		"dev": "vue-cli-service serve --port 5555",
 		"build": "vue-cli-service build"
 	},
 	"dependencies": {

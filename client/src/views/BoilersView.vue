@@ -2,7 +2,9 @@
 	<div>
 		<boilers></boilers>
 
-		<v-container>
+		<!-- <status-boilers></status-boilers> -->
+
+		<v-container>			
 			<v-alert
 				v-if="isMessage == 'error'"
 				outlined
@@ -58,9 +60,10 @@
 import Boilers from '../components/Boilers.vue'
 import ErrorWork from '../components/ErrorWork.vue'
 import WarningWork from '../components/WarningWork.vue'
+import StatusBoilers from '../components/StatusBoilers.vue'
 
 export default {
-	components: { Boilers, ErrorWork, WarningWork },
+	components: { Boilers, ErrorWork, WarningWork, StatusBoilers },
 	name: 'BoilersView',
 	data() {
 		return {

@@ -69,17 +69,27 @@ export default {
 		items: [],
 		opts: [5, 7, 9, 11, 13, -1],
 		search: '',
+		// headers: [
+		// 	{ text: 'Дата', value: 'dt' },
+		// 	{ text: 'Дата и время передачи', value: 'dt' },
+		// 	{ text: 'Значение', value: 'value' },
+		// 	{ text: 'Регистр', value: 'id_reg_Registers' },
+		// 	{ text: '', value: 'actions', sortable: false, width: '150px' },
+		// ],
 		headers: [
-			{ text: 'ID датчика', value: 'id_consum' },
-			{ text: 'Дата и время передачи', value: 'dt' },
-			{ text: 'Значение', value: 'value' },
-			{ text: 'ID регистра', value: 'id_reg_Registers' },
+			{ text: 'Дата', value: 'date' },
+			{ text: 'Время', value: 'time' },
+			{ text: 'Показатель', value: 'value' },
+			{ text: 'Регистр', value: 'idReg' },
 			{ text: '', value: 'actions', sortable: false, width: '150px' },
 		],
 		working: [],
 		loadingWorking: true,
 	}),
 	methods: {
+		addZero(txt) {
+			return `0${txt}`.slice(-2)
+		},
 		fetchDate() {
 			fetch(`${ENDPOINT_SERVER}/api/kotelnaya`)
 				.then(res => res.json())
@@ -94,26 +104,36 @@ export default {
 						})
 					})
 					this.select = this.items[0]
-
-					console.log('this.items =', this.items)
-					// console.log('this.select.abbr[1] =', this.select.abbr[1].split(' ')[1])
 					this.fetchWorking(this.currentId)
 				})
 		},
 		fetchWorking(id) {
-			// let id = this.select.abbr[1].split(' ')[1]
-			// let id = this.select.abbr[1].split(' ')[1]
-			console.log('working this.currentId =', id)
 			fetch(`${ENDPOINT_SERVER}/api/working/${id}`)
 				.then(res => res.json())
 				.then(res => {
-					console.log('this.items =', res)
-					this.working = res
+					const tmpArray = []
 
+					res.forEach((item) => {
+						const dt = new Date(item.dt)
+						const date = `${this.addZero(dt.getDay())}.${this.addZero(
+							dt.getMonth()
+						)}.${dt.getFullYear()}`
+						const time = `${dt.getHours()}:${this.addZero(
+							dt.getMinutes()
+						)}:${this.addZero(dt.getSeconds())}`
+						const idReg = item.id_reg_Registers
+						const value = item.value
+
+						tmpArray.push({
+							date,
+							time,
+							value,
+							idReg,
+						})
+					})
+
+					this.working = tmpArray
 					this.loadingWorking = false
-				})
-				.then(() => {
-					console.log('this.working =', this.working)
 				})
 		},
 	},
@@ -122,16 +142,14 @@ export default {
 	},
 	watch: {
 		select(val) {
-			console.log('val select =', val.abbr[1])
-			// console.log('val select =', JSON.parse(val))
 			this.fetchWorking(this.currentId)
 		},
 	},
 	computed: {
 		currentId() {
 			return this.select.abbr[1].split(' ')[1]
-		}
-	}
+		},
+	},
 }
 </script>
 

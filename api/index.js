@@ -19,7 +19,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use('/', require(`./routes_views/server_page`))
 
 fs.readdirSync('./routes/').forEach(file => {
-	console.log('file =>', file)
+	// console.log('file =>', file)
 	app.use('/api', require(`./routes/${file}`))
 })
 
@@ -30,7 +30,7 @@ fs.readdirSync('./routes/').forEach(file => {
 // 		subject: `Ошибка работы бойлера! ${mess}.... `,
 // 		text: `
 // 			Сообщение об ошибке работы - ${mess}
-// 			-> ${textMess}			
+// 			-> ${textMess}
 // 			`,
 // 	}
 
