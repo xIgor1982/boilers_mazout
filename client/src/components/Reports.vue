@@ -113,22 +113,14 @@ export default {
 				.then(res => {
 					const tmpArray = []
 
-					res.forEach((item) => {
-						const dt = new Date(item.dt)
-						const date = `${this.addZero(dt.getDay())}.${this.addZero(
-							dt.getMonth()
-						)}.${dt.getFullYear()}`
-						const time = `${dt.getHours()}:${this.addZero(
-							dt.getMinutes()
-						)}:${this.addZero(dt.getSeconds())}`
-						const idReg = item.id_reg_Registers
-						const value = item.value
+					res.forEach(item => {
+						const t = item.dt.slice(0, 10).split('-')
 
 						tmpArray.push({
-							date,
-							time,
-							value,
-							idReg,
+							date: `${t[2]}.${t[1]}.${t[0]} г.`,
+							time: item.dt.slice(11, 16),
+							value: item.value,
+							idReg: item.id_reg_Registers,
 						})
 					})
 
