@@ -1,5 +1,5 @@
 const db = require('../db')
-const createNewArray = require('../services/services')
+const {createNewArray} = require('../services/services')
 
 class KotController {
 	async create(req, res) {

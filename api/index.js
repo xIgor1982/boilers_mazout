@@ -2,8 +2,9 @@ require('dotenv').config()
 const express = require('express')
 const fs = require('fs')
 const path = require('path')
-const mailer = require('./nodemailer')
+const mailer = require('./services/nodemailer')
 const cors = require('cors')
+const {loopQuestion} = require('./services/services')
 
 const app = express()
 const PORT = process.env.PORT_SERVER || 3001
