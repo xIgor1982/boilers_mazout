@@ -1,16 +1,22 @@
 <template>
 	<div>
-		<status-boilers></status-boilers>
+		<h1 class="text-center">Система мониторинга</h1>
+		<system-monitoring></system-monitoring>
 	</div>
 </template>
 
 <script>
-import StatusBoilers from '../components/StatusBoilers.vue'
+import SystemMonitoring from '../components/SystemMonitoring.vue'
 
 export default {
-	name: 'StatusBoilersVue',
-	components: { StatusBoilers },
+	name: 'StatusVue',
+	components: { SystemMonitoring },
 }
 </script>
 
-<style></style>
+<style>
+.exact-active-class {
+    color: rgb(244, 67, 54) !important;
+    caret-color: rgb(244, 67, 54) !important;
+}
+</style>

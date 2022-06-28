@@ -9,7 +9,7 @@
 				Отчеты
 			</router-link>
 			<router-link to="/status" class="text--router-link">
-				Состояние
+				Мониторинг
 			</router-link>
 		</v-container>
 	</v-app-bar>

@@ -15,13 +15,15 @@ const transporter = nodemailer.createTransport(
 	}
 )
 
-const mailer = (msgTo, msgSubject, msgText, msgHTML) => {
+const mailer = ({ to, subject, text, html }) => {
 	const message = {
-		to: msgTo,
-		subject: msgSubject,
-		text: msgText,
-		html: msgHTML,
+		to,
+		subject,
+		text,
+		html,
 	}
+	// console.log('mailer -> message =', message)
+	console.log('mailer -> transporter =', transporter)
 	transporter.sendMail(message, (err, info) => {
 		if (err) return console.log(err)
 		console.log(`Сообщение отправлено:`, info)
