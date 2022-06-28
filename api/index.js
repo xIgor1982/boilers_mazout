@@ -24,18 +24,18 @@ fs.readdirSync('./routes/').forEach(file => {
 })
 
 // Тестовый запрос на почту
-setTimeout((mess = 'Бойлер 1', textMess = 'с __.__ не поступают сведения') => {
-	console.log('Тестовый вызов отправки сообщения')
-	const message = {
-		to: 'mazut@zhky.local',
-		subject: `Ошибка работы бойлера! ${mess}.... `,
-		text: `
-			Сообщение об ошибке работы - ${mess}
-			-> ${textMess}
-			`,
-		html: '<h1>Заглавный текст</h1>',
-	}
-	mailer(message)
-}, 5000)
+// setTimeout((mess = 'Бойлер 1', textMess = 'с __.__ не поступают сведения') => {
+// 	console.log('Тестовый вызов отправки сообщения')
+// 	const message = {
+// 		to: 'mazut@zhky.local',
+// 		subject: `Ошибка работы бойлера! ${mess}.... `,
+// 		text: `
+// 			Сообщение об ошибке работы - ${mess}
+// 			-> ${textMess}
+// 			`,
+// 		html: '<h1>Заглавный текст</h1>',
+// 	}
+// 	mailer(message)
+// }, 5000)
 
 app.listen(PORT, () => console.log(`server started on port ${PORT}`))

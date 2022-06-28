@@ -1,20 +1,20 @@
 # ---------- Для сервера - вариант 1 ----------
 
-version: '3'
+# version: '3'
 
-services:
-  api:
-    build: ./api
-    container_name: api
-    restart: always
-    ports:
-      - '3001:3001'
-  client:
-    build: ./client
-    container_name: client
-    restart: always
-    ports:
-      - '3000:3000'
+# services:
+#   api:
+#     build: ./api
+#     container_name: api
+#     restart: always
+#     ports:
+#       - '3001:3001'
+#   client:
+#     build: ./client
+#     container_name: client
+#     restart: always
+#     ports:
+#       - '3000:3000'
 
 # ---------- Для сервера - вариант 2 (пока не работает) ----------
 
@@ -47,25 +47,25 @@ services:
 
 # ---------- для разработки ----------
 
-# version: '3'
+version: '3'
 
-# services:
-#   api:
-#     build: ./api
-#     container_name: api
-#     restart: always
-#     ports:
-#       - '3001:3001'
-#     volumes:
-#       # - /usr/src/app/node_modules
-#       - ./api:/usr/src/app
+services:
+  api:
+    build: ./api
+    container_name: api
+    restart: always
+    ports:
+      - '3001:3001'
+    volumes:
+      # - /usr/src/app/node_modules
+      - ./api:/usr/src/app
 
-#   client:
-#     build: ./client
-#     container_name: client
-#     restart: always
-#     ports:
-#       - '3000:3000'
-#     volumes:
-#       # - /usr/src/app/node_modules
-#       - ./client:/usr/src/app
+  client:
+    build: ./client
+    container_name: client
+    restart: always
+    ports:
+      - '3000:3000'
+    volumes:
+      # - /usr/src/app/node_modules
+      - ./client:/usr/src/app

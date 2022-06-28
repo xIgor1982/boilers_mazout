@@ -17,14 +17,14 @@
 				<v-tab-item>
 					<v-card flat>
 						<v-card-text>
-							<events-notice></events-notice>
+							<events-notice />
 						</v-card-text>
 					</v-card>
 				</v-tab-item>
 				<v-tab-item>
 					<v-card flat>
 						<v-card-text>
-							<options-notice></options-notice>
+							<options-notice />
 						</v-card-text>
 					</v-card>
 				</v-tab-item>
