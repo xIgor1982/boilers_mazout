@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<h2 class="text-center mb-2">События</h2>
+		<!-- <h2 class="text-center mb-2">События</h2> -->
 		<v-card>
 			<v-card-title>
 				<v-text-field
@@ -79,7 +79,7 @@ export default {
 					this.eventNotice = res
 					this.loading = false
 				})
-		},		
+		},
 	},
 	mounted() {
 		this.fetchDate()

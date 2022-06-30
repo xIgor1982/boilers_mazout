@@ -5,11 +5,12 @@
 			<router-link to="/" class="text--router-link" :class="activeClass">
 				Котельные
 			</router-link>
-			<router-link to="/reports" class="text--router-link">
-				Отчеты
-			</router-link>
+			<router-link to="/reports" class="text--router-link"> Связь </router-link>
 			<router-link to="/status" class="text--router-link">
-				Мониторинг
+				Оповещение
+			</router-link>
+			<router-link to="/incident" class="text--router-link">
+				События
 			</router-link>
 		</v-container>
 	</v-app-bar>

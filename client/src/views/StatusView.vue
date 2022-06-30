@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<h1 class="text-center">Система мониторинга</h1>
+		<!-- <h1 class="text-center">Система мониторинга</h1> -->
 		<system-monitoring></system-monitoring>
 	</div>
 </template>

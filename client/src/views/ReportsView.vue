@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<h1 class="text-center">Отчет по котельной</h1>
+		<h1 class="text-center">Связь с котельной</h1>
 		<reports></reports>
 		<!-- <chart-reports></chart-reports> -->
 	</div>

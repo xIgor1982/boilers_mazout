@@ -1,5 +1,5 @@
 // Для запуска на итоговом сервере
-export const ENDPOINT_SERVER = 'http://10.0.198.39:3001'
+// export const ENDPOINT_SERVER = 'http://10.0.198.39:3001'
 
 // **********************************************************
 
@@ -16,7 +16,7 @@ export const ENDPOINT_SERVER = 'http://10.0.198.39:3001'
 //------------------------------------------------------//
 
 // Для запроса при разработке --- локально на компьютере
-// export const ENDPOINT_SERVER = 'http://localhost:3001'
+export const ENDPOINT_SERVER = 'http://localhost:3001'
 
 // Для запроса при разработке 2 --- для запуска docker в сети дома
 // export const ENDPOINT_SERVER = 'http://192.168.1.70:3001'
