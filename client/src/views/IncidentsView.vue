@@ -1,12 +1,16 @@
 <template>
 	<div>
-		<h1>IncidentVue</h1>
+		<!-- <h1>IncidentVue</h1> -->
+		<incidents></incidents>
 	</div>
 </template>
 
 <script>
+import Incidents from '@/components/Incidents.vue'
+
 export default {
-	name: "IncidentVue"
+	name: "IncidentVue",
+	components: {Incidents}
 }
 </script>
 
