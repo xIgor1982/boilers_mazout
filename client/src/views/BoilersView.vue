@@ -4,7 +4,7 @@
 
 		<!-- <status-boilers></status-boilers> -->
 
-		<v-container>			
+		<!-- <v-container>			
 			<v-alert
 				v-if="isMessage == 'error'"
 				outlined
@@ -52,7 +52,7 @@
 				></v-radio>
 			</v-radio-group>
 			<hr />
-		</v-container>
+		</v-container> -->
 	</div>
 </template>
 
