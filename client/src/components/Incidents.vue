@@ -51,6 +51,7 @@
 
 <script>
 import { ENDPOINT_SERVER } from '../config-server'
+import { dateParsing } from '../services/services'
 
 export default {
 	name: 'Incidents',
@@ -66,7 +67,7 @@ export default {
 				{ text: 'id счётчика', value: 'id_counter' },
 				{ text: 'Тип сообщения', value: 'msgtype' },
 				{ text: 'Отправлено', value: 'is_sent' },
-				{ text: 'Дата и время отправления', value: 'dt_sent' },
+				{ text: 'Сообщение отправлено', value: 'dt_sent' },
 			],
 			incident: [],
 			loading: true,
@@ -77,17 +78,37 @@ export default {
 			fetch(`${ENDPOINT_SERVER}/api/incident`)
 				.then(res => res.json())
 				.then(res => {
-					this.incident = this.checkForNull(res)
+					const tmpArray = res
+					const resArray = []
+					tmpArray.forEach(
+						({
+							id_ev,
+							kot_name,
+							dt,
+							id_kotelnaya,
+							id_counter,
+							msgtype,
+							is_sent,
+							dt_sent,
+						}) => {
+							resArray.push({
+								id_ev,
+								kot_name,
+								dt: `${dateParsing(dt).date},\t в ${dateParsing(dt).time}`,
+								id_kotelnaya,
+								id_counter,
+								msgtype,
+								is_sent,
+								dt_sent: `${dateParsing(dt_sent).date}, в ${
+									dateParsing(dt_sent).time
+								}`,
+							})
+						}
+					)
+					console.log('res', res)
+					this.incident = resArray
 					this.loading = false
 				})
-		},
-		checkForNull(arr) {
-			arr.forEach(item => {
-				for (let key in item) {
-					if (!item[key]) item[key] = '---'
-				}
-			})
-			return arr
 		},
 	},
 	mounted() {

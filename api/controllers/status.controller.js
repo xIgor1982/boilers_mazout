@@ -14,10 +14,10 @@ class StatusController {
 			)
 
 			const msg = await db.query(`
-			SELECT * FROM public.msg
-			ORDER BY id_msg ASC
-			
-			`)
+				SELECT * FROM public.msg
+				ORDER BY id_msg ASC
+				`
+			)
 
 			// console.log('status controller -> notify.rows =', notify.rows)
 			console.log('status controller -> msg.rows =', msg.rows)

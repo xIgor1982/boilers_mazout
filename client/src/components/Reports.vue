@@ -60,6 +60,7 @@
 
 <script>
 import { ENDPOINT_SERVER } from '../config-server'
+import { dateParsing } from '../services/services'
 
 export default {
 	name: 'Reports',
@@ -114,35 +115,11 @@ export default {
 					const tmpArray = []
 
 					res.forEach(item => {
-						const d = item.dt.slice(0, 10).split('-'),
-						      t = item.dt.slice(11, 16).split(':')
-						
-						let s = +t[1], h = +t[0]
-
-						if (h >= 21) {
-							switch (h) {
-								case 21: 
-									h = 0
-									break
-								case 22:
-									h = 1
-									break
-								case 23:
-									h = 2
-									break
-							}
-						} else {
-							h += 3
-						}
-
-						s = `0${s}`.slice(-2)
-						h = `0${h}`.slice(-2)
-
-						console.log(`${h}:${s} мск`)
+						const {date, time} = dateParsing(item.dt)
 
 						tmpArray.push({
-							date: `${d[2]}.${d[1]}.${d[0]} г.`,
-							time: `${h}:${s} "мск"`,
+							date,
+							time,
 							value: item.value,
 							idReg: item.id_reg_Registers,
 						})
