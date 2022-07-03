@@ -77,33 +77,27 @@ export default {
 			fetch(`${ENDPOINT_SERVER}/api/incident`)
 				.then(res => res.json())
 				.then(res => {
-					const tmpArray = res
+					// console.log('res =', res)
+
 					const resArray = []
-					tmpArray.forEach(
-						({
-							id_ev,
-							kot_name,
-							dt,
-							cnt_name,
-							msgtext,
-							is_sent,
-							dt_sent,
-						}) => {
+					res.forEach(
+						({ id_ev, kot_name, dt, cnt_name, msgtext, is_sent, dt_sent }) => {
+							const dp = dateParsing(dt)
+
 							resArray.push({
 								id_ev,
 								kot_name,
-								dt: `${dateParsing(dt).date},\t в ${dateParsing(dt).time}`,
+								dt: `${dp.date},\t в ${dp.time}`,
 								cnt_name,
 								msgtext,
 								is_sent,
-								dt_sent: `${dateParsing(dt_sent).date}, в ${
-									dateParsing(dt_sent).time
-								}`,
+								dt_sent: `${dp.date}, в ${dp.time}`,
 							})
 						}
 					)
 					console.log('res', res)
 					this.incident = resArray
+					// this.incident = res
 					this.loading = false
 				})
 		},
